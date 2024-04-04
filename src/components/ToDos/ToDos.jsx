@@ -1,6 +1,6 @@
-import { useState } from 'react';
+
 import styles from './toDos.module.scss';
-import propTypes, { string } from 'prop-types';
+import propTypes from 'prop-types';
 
 ToDo.propTypes = {
     title: propTypes.string,
@@ -9,7 +9,7 @@ ToDo.propTypes = {
     changeTimes: propTypes.func,
 };
 
-function ToDo({title, timesDone, timesToDo, id, changeTimes}) {
+function ToDo({title, timesDone, timesToDo, changeTimes}) {
     
     function addTimes() {
         if (timesDone < timesToDo) {
@@ -18,16 +18,19 @@ function ToDo({title, timesDone, timesToDo, id, changeTimes}) {
     }
 
     return (
-        <div className='card'>
-            <span>{title}</span>
-            <br />
-            <span>some beauty</span>
-            <br />
-            {timesDone} / {timesToDo}
-            <br />
-            <button className='done-btn'
-            onClick={addTimes}
-            >I did it one more time!!</button>
+        <div className={styles.card}>
+            <div className={styles.title}>{title}</div>
+            <div>
+                <progress max={timesToDo} value={timesDone}>{timesDone}</progress>
+            </div>
+            
+            <div className={styles['progress-number']}>{timesDone} / {timesToDo}</div>
+            <div>
+                <button className={styles.btn}
+                onClick={addTimes}
+                >I did it one more time!!</button>
+            </div>
+            
         </div>
     )
 }

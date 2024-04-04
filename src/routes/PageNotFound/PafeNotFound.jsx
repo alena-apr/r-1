@@ -7,7 +7,7 @@ const PageNotFound = () => {
         <Fragment>
             <Layout>
                 <main>
-                    <div className={styles["text"]}>
+                    <div className={styles.text}>
                         Страница не найдена
                     </div>
                 </main>

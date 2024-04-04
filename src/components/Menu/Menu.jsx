@@ -11,7 +11,7 @@ export default function Menu() {
         { title: "L5", to: "/l5" },
         { title: "L6", to: "/l6" },
         { title: "L7", to: "/l7" },
-        { title: "L8", to: "/l8" }
+        { title: "L8??", to: "/l8" }
     ];
     return (
         <nav className = {styles['header-nav']}>
