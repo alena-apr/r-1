@@ -1,8 +1,7 @@
-import { Routes, Route } from 'react-router-dom'
-import './App.css'
-import Main from './routes/Main/Main'
-import ToDoList from './routes/ToDoList/ToDoList'
-import PageNotFound from './routes/PageNotFound/PafeNotFound'
+import { Routes, Route } from 'react-router-dom';
+import Main from './routes/Main/Main';
+import ToDoList from './routes/ToDoList/ToDoList';
+import PageNotFound from './routes/PageNotFound/PageNotFound';
 
 function App() {
   

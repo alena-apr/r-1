@@ -8,4 +8,24 @@
     margin: 20px;
     font-weight: 700;
     font-size: 1.5rem;
+    text-align: center;
+}
+
+.todos-header {
+    width: 500px;
+}
+
+.add-todo-wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+
+.input {
+    width: 35%;
+    margin: 8px;
+}
+
+.warning {
+    text-align: center;
+    color:orangered
 }

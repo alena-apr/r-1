@@ -2,6 +2,15 @@
     display: flex;
     column-gap: 25px;
     font-size: 16px;
+
+    & a {
+      text-decoration: none;
+      color:rgb(31, 8, 0)
+    }
+
+    & a:hover{
+      color:firebrick;
+    }
 }
 
 .header-nav__item:hover {

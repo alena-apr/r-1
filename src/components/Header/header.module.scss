@@ -1,13 +1,14 @@
 .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-inline: 15px;
-    padding-top: 25px;
-    padding-bottom: 30px;
-    border-bottom: 1px solid rgb(44, 54, 63);
-  }
-  .logo {
-    font-family: "Lobster", sans-serif;
-    font-size: 35px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-inline: 15px;
+  padding-top: 25px;
+  padding-bottom: 30px;
+  border-bottom: 1px solid rgb(44, 54, 63);
+}
+
+.logo {
+  font-family: "Lobster", sans-serif;
+  font-size: 35px;
 }

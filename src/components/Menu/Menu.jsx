@@ -16,8 +16,8 @@ export default function Menu() {
     return (
         <nav className = {styles['header-nav']}>
             {MENU.map(({title, to}, i) => (
-        <Link className = {styles['header-nav__item']} key={`${i}-menu-item`} to={to}>{title}</Link>
-      ))}
+                <Link className = {styles['header-nav__item']} key={`${i}-menu-item`} to={to}>{title}</Link>
+            ))}
         </nav>
     )
 }
