@@ -21,11 +21,11 @@ function ToDo({ title, timesDone, timesToDo, changeTimes, onDeleteToDo }) {
   }
 
   let bgCardColor = `${styles.card}`;
-  if (timesDone / timesToDo < 1 / 4) {
+  if (timesDone / timesToDo <= 1 / 4) {
     bgCardColor += ` ${styles.red}`;
   } else if (
-    timesDone / timesToDo > 1 / 4 &&
-    timesDone / timesToDo < 1 / 1.33
+    timesDone / timesToDo >= 1 / 4 &&
+    timesDone / timesToDo <= 1 / 1.33
   ) {
     bgCardColor += ` ${styles.yellow}`;
   } else {
