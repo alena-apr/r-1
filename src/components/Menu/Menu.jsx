@@ -5,7 +5,7 @@ export default function Menu() {
     const MENU = [
         { title: "На главную", to: "/" },
         { title: "To do list", to: "/todo" },
-        { title: "L2", to: "/l2" },
+        { title: "Form", to: "/form" },
         { title: "L3", to: "/l3" },
         { title: "L4", to: "/l4" },
         { title: "L5", to: "/l5" },

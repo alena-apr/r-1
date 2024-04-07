@@ -10,6 +10,7 @@ function App() {
     <Routes>
       <Route path="/" element={<Main />} />
       <Route path='/todo' element={<ToDoList />} />
+      <Route path='/form' element={<ToDoList />} />
       <Route path="*" element={<PageNotFound />} />
     </Routes>
   )
