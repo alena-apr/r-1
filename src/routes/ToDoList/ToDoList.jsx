@@ -2,8 +2,8 @@ import { Fragment, useState } from "react";
 import Layout from "../../components/Layout/Layout";
 import styles from "./toDoList.module.scss";
 import ToDo from "../../components/ToDo/ToDo";
-import btnStyle from "./../../components/ToDo/toDo.module.scss";
 import ProgressBar from "../../components/ToDo/ProgressBar";
+import ToDoForm from "../../components/ToDo/ToDoForm";
 
 function ToDoList() {
   const [toDos, setToDos] = useState([
@@ -11,7 +11,7 @@ function ToDoList() {
     { id: 2, title: "Поесть", timesDone: 1, timesToDo: 3 },
     { id: 3, title: "Ещё что-нибудь", timesDone: 7, timesToDo: 10 },
   ]);
-  const [warning, setWarning] = useState(false);
+  // const [warning, setWarning] = useState(false);
 
   let fakeAi = toDos[toDos.length - 1]?.id ?? 0;
 
@@ -37,11 +37,10 @@ function ToDoList() {
     }
   }
 
-  function addToDo(e) {
-    e.preventDefault();
-    const title = e.target.title.value;
-    const timesToDo = parseInt(e.target.timesToDo.value);
-    if (title.length > 0 && !isNaN(timesToDo)) {
+  function onSend({title, timesToDo}) {
+    // const title = e.target.title.value;
+    // const timesToDo = parseInt(e.target.timesToDo.value);
+    // if (title.length > 0 && !isNaN(timesToDo)) {
       setToDos([
         {
           id: ++fakeAi,
@@ -51,11 +50,11 @@ function ToDoList() {
         },
         ...toDos,
       ]);
-      setWarning(false);
-    } else {
-      setWarning(true);
-    }
-    e.target.reset();
+    //   setWarning(false);
+    // } else {
+    //   setWarning(true);
+    // }
+    // e.target.reset();
   }
 
   function onDeleteToDo(i) {
@@ -69,26 +68,10 @@ function ToDoList() {
           <div className={styles.main}>
             <div className={styles["todos-header"]}>
               <div className={styles.title}>My todo list</div>
-              <form className={styles["add-todo-wrapper"]} onSubmit={addToDo}>
-                <input
-                  type="text"
-                  className={styles.input}
-                  placeholder="что мне надо сделать"
-                  name="title"
-                />
-                <input
-                  type="text"
-                  className={styles.input}
-                  placeholder="сколько раз"
-                  name="timesToDo"
-                />
-                <button className={btnStyle.btn} type="submit">
-                  Добавить
-                </button>
-              </form>
-              {warning && (
+              <ToDoForm send={onSend} key={fakeAi}/>
+              {/* {warning && (
                 <div className={styles.warning}>Впиши буковки и циферки</div>
-              )}
+              )} */}
               <div className={styles["total-wrapper"]}>
                 <div>
                   <span>Все дела:</span>
