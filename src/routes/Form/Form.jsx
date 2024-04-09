@@ -1,7 +1,8 @@
 import { Fragment, useState } from "react";
 import Layout from "../../components/Layout/Layout";
 import styles from "./form.module.scss";
-import { useNavigate  } from 'react-router-dom'
+import FormTable from "../../components/FormComponent/FormTable";
+// import { useNavigate  } from 'react-router-dom'
 
 function Form() {
   const [fields, setFields] = useState([
@@ -34,11 +35,14 @@ function Form() {
     },
   ]);
     const [guests, setGuests] = useState([]);
-    const navigate = useNavigate()
-//   const [showGuests, setShowGuessts] = useState(false);
-  //   let fakeAi = guests[guests.length - 1]?.id ?? 0;
+    const [lists, setLists] = useState([]);
+    // const navigate = useNavigate()
+    // const [showGuests, setShowGuessts] = useState(false);
+    // let fakeAi = guests[guests.length - 1]?.id ?? 0;
+    
+    const [showList, setShowList] = useState(false);
 
-  //const [warning, setWarning] = useState(false);
+    //const [warning, setWarning] = useState(false);
 
   function updateField(i, value) {
     const validField = fields[i].regEx.test(fields[i].value);
@@ -92,7 +96,12 @@ function Form() {
     fields.forEach((field) => (dataFields[field.name] = field.value));
     guests.forEach((guest) => (dataGuests[guest.name] = guest.value));
       console.log(dataFields, dataGuests);
-      navigate('/form/formInfo')
+      setLists([
+        ...lists, 
+        {dataFields}, {dataGuests},
+      ])
+      // return (dataFields, dataGuests);
+      // navigate('/form/formInfo')
   }
 
   return (
@@ -100,7 +109,9 @@ function Form() {
       <Layout>
         <main className={styles.main}>
           <div className={styles.title}>Форма</div>
-          <form className={styles.form}>
+
+          {!showList && (
+            <form className={styles.form}>
             {fields.map((field, i) => (
               <label key={field.name} className={styles.label}>
                 <span>{field.label}:</span>
@@ -144,11 +155,17 @@ function Form() {
                 </div>
             </div>
             <div className={styles["btn-wrapper"]}>
-              <button className={styles.btn} onClick={(e) => onSend(e)}>
+              <button className={styles.btn} onClick={(e) => {onSend(e) /* ,setShowList(true)*/ }}>
                 Отправить
               </button>
             </div>
           </form>
+          )}
+          
+          {showList && (
+            <FormTable dataFields={lists.dataFields} dataGUests={lists.dataGuests} />
+          )}
+          
         </main>
       </Layout>
     </Fragment>
@@ -156,3 +173,7 @@ function Form() {
 }
 
 export default Form;
+
+
+
+console.log()
