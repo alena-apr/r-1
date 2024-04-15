@@ -1,7 +1,6 @@
 import { Fragment, useState } from "react";
 import Layout from "../../components/Layout/Layout";
 import styles from "./form.module.scss";
-import FormTable from "../../components/FormComponent/FormTable";
 // import { useNavigate  } from 'react-router-dom'
 
 function Form() {
@@ -34,15 +33,15 @@ function Form() {
       warnText: "Неверно введен телефон",
     },
   ]);
-    const [guests, setGuests] = useState([]);
-    const [lists, setLists] = useState([]);
-    // const navigate = useNavigate()
-    // const [showGuests, setShowGuessts] = useState(false);
-    // let fakeAi = guests[guests.length - 1]?.id ?? 0;
-    
-    const [showList, setShowList] = useState(false);
+  const [guests, setGuests] = useState([]);
+  const [lists, setLists] = useState([]);
+  // const navigate = useNavigate()
+  // const [showGuests, setShowGuessts] = useState(false);
+  // let fakeAi = guests[guests.length - 1]?.id ?? 0;
 
-    //const [warning, setWarning] = useState(false);
+  const [showList, setShowList] = useState(false);
+
+  //const [warning, setWarning] = useState(false);
 
   function updateField(i, value) {
     const validField = fields[i].regEx.test(fields[i].value);
@@ -95,13 +94,10 @@ function Form() {
     const dataGuests = {};
     fields.forEach((field) => (dataFields[field.name] = field.value));
     guests.forEach((guest) => (dataGuests[guest.name] = guest.value));
-      console.log(dataFields, dataGuests);
-      setLists([
-        ...lists, 
-        {dataFields}, {dataGuests},
-      ])
-      // return (dataFields, dataGuests);
-      // navigate('/form/formInfo')
+    console.log(dataFields, dataGuests);
+    setLists([...lists, { dataFields }, { dataGuests }]);
+    // return (dataFields, dataGuests);
+    // navigate('/form/formInfo')
   }
 
   return (
@@ -112,32 +108,32 @@ function Form() {
 
           {!showList && (
             <form className={styles.form}>
-            {fields.map((field, i) => (
-              <label key={field.name} className={styles.label}>
-                <span>{field.label}:</span>
-                <input
-                  className={`${styles.input} ${
-                    field.valid ? "" : `${styles.red}`
-                  }`}
-                  type={field.type}
-                  name={field.name}
-                  onChange={(e) => updateField(i, e.target.value)}
-                />
-                {/* <div>
+              {fields.map((field, i) => (
+                <label key={field.name} className={styles.label}>
+                  <span>{field.label}:</span>
+                  <input
+                    className={`${styles.input} ${
+                      field.valid ? "" : `${styles.red}`
+                    }`}
+                    type={field.type}
+                    name={field.name}
+                    onChange={(e) => updateField(i, e.target.value)}
+                  />
+                  {/* <div>
                         {warning && (<div>{field[i].warnText}</div>)}
                     </div> */}
-              </label>
-            ))}
-            <div className={styles["guests-wrapper"]}>
-              <span>Гости? </span>
-              <button
-                className={`${styles.btn} ${styles["btn-small"]}`}
-                onClick={(e) => {
-                  e.preventDefault(), onGuestAdd();
-                }}
-              >
-                Добавить гостя!
-              </button>
+                </label>
+              ))}
+              <div className={styles["guests-wrapper"]}>
+                <span>Гости? </span>
+                <button
+                  className={`${styles.btn} ${styles["btn-small"]}`}
+                  onClick={(e) => {
+                    e.preventDefault(), onGuestAdd();
+                  }}
+                >
+                  Добавить гостя!
+                </button>
                 <div>
                   {guests.map((guest, i) => (
                     <label key={`${i}-guest`} className={styles.label}>
@@ -153,19 +149,26 @@ function Form() {
                     </label>
                   ))}
                 </div>
-            </div>
-            <div className={styles["btn-wrapper"]}>
-              <button className={styles.btn} onClick={(e) => {onSend(e) /* ,setShowList(true)*/ }}>
-                Отправить
-              </button>
-            </div>
-          </form>
+              </div>
+              <div className={styles["btn-wrapper"]}>
+                <button
+                  className={styles.btn}
+                  onClick={(e) => {
+                    onSend(e); /* ,setShowList(true)*/
+                  }}
+                >
+                  Отправить
+                </button>
+              </div>
+            </form>
           )}
-          
+
           {showList && (
-            <FormTable dataFields={lists.dataFields} dataGUests={lists.dataGuests} />
+            <FormTable
+              dataFields={lists.dataFields}
+              dataGUests={lists.dataGuests}
+            />
           )}
-          
         </main>
       </Layout>
     </Fragment>
@@ -174,6 +177,4 @@ function Form() {
 
 export default Form;
 
-
-
-console.log()
+console.log();

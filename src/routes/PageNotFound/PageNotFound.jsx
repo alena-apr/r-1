@@ -1,14 +1,19 @@
 import { Fragment } from 'react';
 import styles from './pageNotFound.module.scss';
 import Layout from '../../components/Layout/Layout';
+import { Link } from 'react-router-dom';
 
 const PageNotFound = () => {
     return ( 
         <Fragment>
             <Layout>
-                <main>
-                    <div className={styles.text}>
-                        Страница не найдена
+                <main className={styles.text}>
+                    <div className={styles.oops}>
+                        <div>404 Ooops!</div>
+                        <div>Страница не найдена</div>
+                    </div>
+                    <div className={styles.link}>
+                        <Link className={styles['back-to-main']} to='/'>Вернуться на главную страницу</Link>
                     </div>
                 </main>
             </Layout>

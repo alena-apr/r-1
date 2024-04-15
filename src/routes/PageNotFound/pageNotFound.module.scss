@@ -4,3 +4,21 @@
     text-align: center;
     margin-block: 200px;
 }
+
+.oops {
+    font-size: 35px;
+}
+
+.link {
+    margin-block: 32px;
+}
+
+.back-to-main {
+    font-weight: 400;
+    text-decoration: none;
+    color:rgb(31, 8, 0);
+  
+    &:hover {
+        color:firebrick;
+      }
+}

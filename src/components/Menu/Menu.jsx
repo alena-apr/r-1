@@ -6,7 +6,7 @@ export default function Menu() {
         { title: "На главную", to: "/" },
         { title: "To do list", to: "/todo" },
         { title: "Form", to: "/form" },
-        { title: "L3", to: "/l3" },
+        { title: "Input", to: "/input" },
         { title: "L4", to: "/l4" },
         { title: "L5", to: "/l5" },
         { title: "L6", to: "/l6" },
