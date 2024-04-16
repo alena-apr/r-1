@@ -7,6 +7,11 @@ import ModalUI from "../../components/ModalUI/ModalUI";
 
 function Modal() {
   const [showModal, setShowModal] = useState(false);
+
+function onCloseModal() {
+  setShowModal(false);
+}
+
   return (
     <Fragment>
       <Layout>
@@ -18,9 +23,9 @@ function Modal() {
             Открыть модальное окно
           </button>
           {showModal && (
-            <ModalUI>
-              <ModalUI.Header>
-                Я заголовок модалки
+            <ModalUI closeModal={() => onCloseModal()}>
+              <ModalUI.Header >
+                <h4>Я заголовок модалки</h4> 
                 <span
                   className={styles["close-modal"]}
                   onClick={() => setShowModal(!showModal)}

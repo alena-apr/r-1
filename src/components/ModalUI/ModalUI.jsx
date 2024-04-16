@@ -10,11 +10,15 @@ import styles from "./modalUI.module.scss";
   el = { children: pt.oneOfType([pt.arrayOf(pt.node), pt.node]) };
 });
 
+ModalUI.propTypes ={
+  closeModal: pt.func.isRequired
+}
+
 ModalUI.Header = ModalUIHeader;
 ModalUI.Content = ModalUIContent;
 ModalUI.Footer = ModalUIFooter;
 
-function ModalUI({ children }) {
+function ModalUI({ children, closeModal }) {
   const headerChildren = children?.filter(
     (child) => child.type == ModalUI.Header
   );
@@ -27,7 +31,7 @@ function ModalUI({ children }) {
 
   return (
     <>
-      <div className={styles["modal-bg"]} onClick={(e) => (e.target === "modal-bg" ? onClick() : null)}>
+      <div className={styles["modal-bg"]} onClick={(e) => (e.target === "modal-bg" ? closeModal() : null)}>
         <div className={styles["modal-wrapper"]}>
           <div className={styles.modal}>
             <div className={styles.header}>{headerChildren}</div>
