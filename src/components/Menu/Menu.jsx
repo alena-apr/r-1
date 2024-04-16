@@ -7,7 +7,7 @@ export default function Menu() {
         { title: "To do list", to: "/todo" },
         { title: "Form", to: "/form" },
         { title: "Input", to: "/input" },
-        { title: "L4", to: "/l4" },
+        { title: "Modal", to: "/modal" },
         { title: "L5", to: "/l5" },
         { title: "L6", to: "/l6" },
         { title: "L7", to: "/l7" },
