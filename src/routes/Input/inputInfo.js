@@ -23,6 +23,10 @@ async function getCities(countryId) {
   return cities.filter((city) => city.country_id == countryId);
 }
 
+export function dataToSelect(data) {
+  return data.map(({id, name}) => ({value: id, text: name}))
+}
+
 async function timeout(time) {
   return new Promise(function (resolve) {
     window.setTimeout(resolve, time);
