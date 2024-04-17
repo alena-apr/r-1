@@ -1,10 +1,10 @@
 import { Fragment } from "react";
-import propTypes, { string } from 'prop-types';
+import propTypes from 'prop-types';
 import Header from '../Header/Header'
 
 Layout.propTypes = {
     children: propTypes.node,
-    className: string
+    className: propTypes.string
 };
 
 function Layout({className, children}) {

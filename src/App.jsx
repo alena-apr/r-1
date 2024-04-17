@@ -5,9 +5,9 @@ import PageNotFound from './routes/PageNotFound/PageNotFound';
 import Form from './routes/Form/Form'
 import Input from './routes/Input/Input';
 import Modal from './routes/Modal/Modal';
+import Products from './routes/Products/Products';
 
 function App() {
-  
 
   return (
     <Routes>
@@ -16,6 +16,7 @@ function App() {
       <Route path='/form' element={<Form />} />
       <Route path='/input' element={<Input />} />
       <Route path='/modal' element={<Modal />} />
+      <Route path='/products' element={<Products />} />
       <Route path="*" element={<PageNotFound />} />
     </Routes>
   )

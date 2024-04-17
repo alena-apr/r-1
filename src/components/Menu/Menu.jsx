@@ -8,7 +8,7 @@ export default function Menu() {
         { title: "Form", to: "/form" },
         { title: "Input", to: "/input" },
         { title: "Modal", to: "/modal" },
-        { title: "L5", to: "/l5" },
+        { title: "Products", to: "/products" },
         { title: "L6", to: "/l6" },
         { title: "L7", to: "/l7" },
         { title: "L8??", to: "/l8" }
