@@ -3,8 +3,8 @@ import t from 'prop-types';
 
 Card.propTypes = {
     title: t.string, 
-    price: t.string, 
-    rest: t.string
+    price: t.number, 
+    rest: t.number
 }
 
 
