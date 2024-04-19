@@ -1,83 +1,45 @@
 import Layout from "../../components/Layout/Layout";
 import Card from "../../components/Products/Card";
 import main from "./../Form/form.module.scss";
-import { useEffect, useState } from "react";
-import styles from './products.module.scss';
+import styles from "./products.module.scss";
+import useFetch from "../../hooks/useFetch";
 
-
-export class HttpError extends Error {
-	constructor(message, status, text) {
-		super(message);
-		this.status = status;
-		this.text = text;
-	}
-}
-
-
-
-
+// `https://faceprog.ru/reactcourseapi/products/all.php`
+// `https://faceprog.ru/reactcourseapi/products/?id=1000`
 
 function Products() {
-	const [prods, setProds] = useState([]);
-	const [state, setState] = useState({ pending: true, data: null, error: null })
+  const response = useFetch(
+    `https://faceprog.ru/reactcourseapi/products/all.php`
+  );
 
-	useEffect(() => {
-		(async function request() {
-			try {
-				const response = await fetch(`https://faceprog.ru/reactcourseapi/products/all.php`)
-				// .then(r => r.json())
-				// .then(r => setProds(r));
+  const products = response.data;
+  const httpError = !response.pending & (products == null);
+  const loadingSuccess = !response.pending & (products != null);
 
-				if (response.status < 200 || response.status >= 400) {
-					throw new HttpError('Status exc', response.status, await response.text());
-				}
-
-				// if (response.status > 400 || response.status < 499) {
-				// 	setState({ pending: false, data: null, error: error })
-				// 	console.log(state)
-				// }
-
-				const data = await response.json();
-				// return data;
-				console.log(data);
-				console.log(state);
-				setState({ pending: false, data: data, error: null })
-				setProds(data)
-				console.log(state)
-				console.log(state.data)
-
-			} catch (e) {
-				console.log(e);
-				throw e;
-			}
-
-		})();
-
-
-
-		
-	}, []);
-
-	return (
-		<>
-			<Layout>
-				<main className={main.main}>
-					<div> Products works!!</div>
-					<div className={styles["cards-wrapper"]}>
-						{state.pending && <div>Loading...</div> }
-						{!state.pendeng && prods.map(prod => <Card key={prod.id} {...prod} />)}
-						{/* {prods.map(prod => <Card key={prod.id} {...prod} />)} */}
-					</div>
-				</main>
-			</Layout>
-		</>
-	)
+  return (
+    <>
+      <Layout>
+        <main className={main.main}>
+          <div> Products work!!</div>
+          <div>{response.status}</div>
+          <div className={styles["cards-wrapper"]}>
+            {response.pending && <div>Loading...</div>}
+            {loadingSuccess == 1 &&
+              products.map((item) => <Card key={item.id} {...item} />)}
+          </div>
+          {httpError == 1 && (
+            <div className={styles.error}>
+              Что-то пошло не так... {response.status}
+            </div>
+          )}
+        </main>
+      </Layout>
+    </>
+  );
 }
-
 
 // id: 106, title: 'Ipnone XX', price: 14000, rest: 8
 export default Products;
-
 
 /*
 export class HttpError extends Error{
