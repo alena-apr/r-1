@@ -6,11 +6,11 @@
 // import Input from './routes/Input/Input';
 // import Modal from './routes/Modal/Modal';
 // import Products from './routes/Products/Products';
-import router from './router/router';
-import { RouterProvider } from 'react-router-dom';
+import router from "./router/router";
+import { RouterProvider } from "react-router-dom";
+
 
 function App() {
-
   return (
     // <Routes>
     //   <Route path="/" element={<Main />} />
@@ -22,9 +22,11 @@ function App() {
     //   <Route path="*" element={<PageNotFound />} />
     // </Routes>
     <>
-    <RouterProvider router={router} />
+      {/* <Provider store={store}> */}
+        <RouterProvider router={router} />
+      {/* </Provider> */}
     </>
-  )
+  );
 }
 
-export default App
+export default App;
