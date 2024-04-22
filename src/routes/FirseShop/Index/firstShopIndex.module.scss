@@ -1,0 +1,40 @@
+.container {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.header {
+    text-align: center;
+    margin-block: 1.5rem;
+}
+
+.first-shop {
+    color: firebrick;
+}
+
+.logo {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.header-nav {
+    display: flex;
+    justify-content: center;
+    column-gap: 25px;
+    margin-top: 20px;
+    font-size: 16px;
+
+    & a {
+      text-decoration: none;
+      color:rgb(31, 8, 0)
+    }
+
+    & a:hover{
+      color:firebrick;
+    }
+}
+
+.header-nav__item:hover {
+  scale: 1.2;
+  transition: scale 0.2s;
+}

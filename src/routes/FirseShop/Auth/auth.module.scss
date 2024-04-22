@@ -1,0 +1,12 @@
+.wrapper {
+    text-align: center;
+}
+
+.item {
+    margin: 20px;
+
+    & label {
+        display: inline-block;
+        width: 70px;
+    }
+}

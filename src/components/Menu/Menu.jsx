@@ -9,7 +9,7 @@ export default function Menu() {
         { title: "Input", to: "/input" },
         { title: "Modal", to: "/modal" },
         { title: "Products", to: "/products" },
-        { title: "L6", to: "/l6" },
+        { title: "First Shop", to: "/first-shop/main" },
         { title: "L7", to: "/l7" },
         { title: "L8??", to: "/l8" }
     ];

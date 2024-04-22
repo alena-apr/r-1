@@ -1,4 +1,4 @@
-import Layout from "../../components/Layout/Layout";
+// import Layout from "../../components/Layout/Layout";
 import Card from "../../components/Products/Card";
 import main from "./../Form/form.module.scss";
 import styles from "./products.module.scss";
@@ -18,7 +18,7 @@ function Products() {
 
   return (
     <>
-      <Layout>
+      {/* <Layout> */}
         <main className={main.main}>
           <div> Products work!!</div>
           <div>{response.status}</div>
@@ -33,7 +33,7 @@ function Products() {
             </div>
           )}
         </main>
-      </Layout>
+      {/* </Layout> */}
     </>
   );
 }

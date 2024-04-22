@@ -43,14 +43,14 @@ function useFetch(url, options = {}) {
           status: response.status,
         });
       } catch (e) {
-        if (e.status < 200 || e.status >= 400) {
+        // if (e.status < 200 || e.status >= 400) {
           setState({
             pending: false,
             data: null,
             error: e,
             status: e.status,
           });
-        }
+        // }
 
         // if (e instanceof HttpError && e.status === 401) {
         //   setState({
@@ -61,7 +61,7 @@ function useFetch(url, options = {}) {
         //   });
         // }
         console.log(e);
-        throw e;
+        // throw e;
       }
     })();
   }, []);

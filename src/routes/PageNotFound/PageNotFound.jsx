@@ -14,6 +14,7 @@ const PageNotFound = () => {
                     </div>
                     <div className={styles.link}>
                         <Link className={styles['back-to-main']} to='/'>Вернуться на главную страницу</Link>
+                        <Link className={styles['back-to-main']} to='/first-shop'>Вернуться в магазин</Link>
                     </div>
                 </main>
             </Layout>
