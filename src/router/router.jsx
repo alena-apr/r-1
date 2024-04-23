@@ -11,6 +11,9 @@ import Auth from "../routes/FirseShop/Auth/Auth";
 import Office from "../routes/FirseShop/Office/Office";
 import FirstShopIndex from "../routes/FirseShop/Index/FirstShopIndex";
 import Catalog from "../routes/FirseShop/Catalog/Catalog";
+import Card from "../components/Products/Card";
+import { getItemByIdLoader } from "../components/Products/Card";
+
 
 const router = createBrowserRouter([
   {
@@ -57,7 +60,12 @@ const router = createBrowserRouter([
           {
               path: 'office', 
               element: <Office />
-          }
+          }, 
+          {
+            path: 'catalog/:itemId', 
+            element: <Card />,
+            loader: getItemByIdLoader
+          },
       ],
   },
 ]);

@@ -4,6 +4,7 @@ import t from "prop-types";
 
 import { useSelector, useDispatch } from "react-redux";
 import { add, remove } from "./../../store/cart";
+import useFetch from "../../hooks/useFetch";
 
 Card.propTypes = {
   title: t.string,
@@ -15,6 +16,8 @@ Card.propTypes = {
 function Card({ title, price, rest, id }) {
   const items = useSelector((state) => state.cart.items);
   const dispatch = useDispatch();
+
+  const oneItem = getItemByIdLoader(id);
 
   const product = {
     title: title,
@@ -28,7 +31,7 @@ function Card({ title, price, rest, id }) {
   return (
     <>
       <div className={styles.card}>
-        <div className={styles.title}>{title}</div>
+        <div className={styles.title}>{title ? title : oneItem.title}</div>
         <div className={styles.price}>Цена: {price} &#8381;</div>
         <div className={styles.rest}>Осталось: {rest}</div>
         <div>
@@ -47,3 +50,7 @@ function Card({ title, price, rest, id }) {
 }
 
 export default Card;
+
+export function getItemByIdLoader(id) {
+  useFetch(`https://faceprog.ru/reactcourseapi/products/?id=${id}`);
+}
