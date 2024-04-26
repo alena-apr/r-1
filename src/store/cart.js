@@ -15,26 +15,6 @@ export const cartSlice = createSlice({
     },
     add: (state, action) => {
       state.items.push(action.payload);
-      //   const isItemInCart = findItemInCart(state, action);
-      //   console.log(isItemInCart);
-      //   if (
-      //     !isItemInCart ||
-      //     isItemInCart == undefined ||
-      //     isItemInCart.length == 0
-      //   ) {
-      //     state.items.push(action.payload);
-      //   }
-
-      //   if (isItemInCart.length == 1) {
-      //     const existingItem = state.items.find(
-      //       (item) => item.id == action.payload.id
-      //     );
-      //     console.log(existingItem);
-      //     console.log(existingItem.count);
-      //     console.log(1111);
-
-      //     existingItem.count += 1;
-      //   }
       console.log(state.items.map((i) => i.title));
       console.log(state.items.map((i) => i.id));
       console.log(state.items.map((i) => i.count));
@@ -71,10 +51,6 @@ export const itemCountSelector = (state, id) => {
   }
 };
 
-// function findItemInCart(state, action) {
-//   const itemInCart = state.items.map((item) => item.id === action.payload.id);
-//   return itemInCart;
-// }
 
 export const loadCart = createAsyncThunk(
   "cart/loadCart",
