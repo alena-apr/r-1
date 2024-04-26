@@ -2,6 +2,7 @@ import styles from "./firstShopIndex.module.scss";
 import Layout from "../../../components/Layout/Layout";
 import { Link, Outlet } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { cartTotalSelector } from "../../../store/cart";
 
 const headerMENU = [
   { title: "Главная", to: "/first-shop/main" },
@@ -12,6 +13,7 @@ const headerMENU = [
 
 function FirstShopIndex() {
   const items = useSelector(state => state.cart.items);
+  const total = useSelector(cartTotalSelector)
 
 
   return (
@@ -34,6 +36,7 @@ function FirstShopIndex() {
                 ))}
               </nav>
               <div>Товаров в корзине: {items.length} </div>
+              <div>Ссума: {total} </div>
             </header>
             <Outlet />
           </div>

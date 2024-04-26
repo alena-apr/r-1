@@ -5,8 +5,10 @@ import "./assets/main.scss";
 // import { BrowserRouter } from 'react-router-dom';
 import { Provider } from "react-redux";
 import store from "./store";
+
 import { check } from "./api/auth.js";
 import { login } from "./store/auth.js";
+import { loadCart } from "./store/cart.js";
 
 (async () => {
   const user = await check();
@@ -24,3 +26,4 @@ import { login } from "./store/auth.js";
     </React.StrictMode>
   );
 })();
+store.dispatch(loadCart());

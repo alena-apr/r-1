@@ -1,22 +1,30 @@
+// import ProductsControl from "../components/ProductsControl/ProductsControl";
 import styles from "./../../../components/Card/card.module.scss";
 import btn from "./../../../routes/Form/form.module.scss";
 
 import { useDispatch } from "react-redux";
 import { useLoaderData } from "react-router-dom";
+// import { useSelector } from "react-redux";
 
-import { add, remove } from "../../../store/cart";
+// import { add, remove } from "../../../store/cart";
+// import { cartHasSelector } from "../../../store/cart";
+import { addToCartThunk, removeFromCartThunk, changeCartThunk } from "../../../store/cart";
 
 function ItemPage() {
   const item = useLoaderData();
   const dispatch = useDispatch();
-  console.log(item);
+  // console.log(item);
+  // const inCart = useSelector((state) => cartHasSelector(state, item.id));
 
   const product = {
+    id: item.id,
     title: item.title,
     price: item.price,
     rest: item.rest,
-    id: item.id,
+    count: 1,
   };
+
+  // console.log(product);
 
   return (
     <>
@@ -30,23 +38,36 @@ function ItemPage() {
             <div key={review.id}>{review.text}</div>
           ))}
         </div>
+        {/* <ProductsControl product={item} /> */}
         <div>
-          <button
-            onClick={(e) => {
-              e.preventDefault(), dispatch(add(product));
-            }}
-            className={`${btn.btn} ${btn["btn-small"]}`}
-          >
-            добавить
+          {/* {!inCart && ( */}
+            <button
+              onClick={(e) => {
+                e.preventDefault(), dispatch(addToCartThunk(product));
+              }}
+              className={`${btn.btn} ${btn["btn-small"]}`}
+            >
+              добавить
           </button>
           <button
-            onClick={(e) => {
-              e.preventDefault(), dispatch(remove(product.id));
-            }}
-            className={`${btn.btn} ${btn["btn-small"]}`}
-          >
-            убрать
-          </button>
+              onClick={(e) => {
+                e.preventDefault(), dispatch(changeCartThunk(product, product.count +1 ));
+              }}
+              className={`${btn.btn} ${btn["btn-small"]}`}
+            >
+              +
+            </button>
+          {/* )} */}
+          {/* {inCart && ( */}
+            <button
+              onClick={(e) => {
+                e.preventDefault(), dispatch(removeFromCartThunk(product.id));
+              }}
+              className={`${btn.btn} ${btn["btn-small"]}`}
+            >
+              убрать
+            </button>
+           {/* )} */}
         </div>
       </div>
     </>
